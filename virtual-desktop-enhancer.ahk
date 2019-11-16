@@ -569,11 +569,12 @@ _ChangeBackground(n:=1) {
 
 _ChangeAppearance(n:=1) {
     Menu, Tray, Tip, % _GetDesktopName(n)
-    if (FileExist("./icons/" . n ".ico")) {
-        Menu, Tray, Icon, icons/%n%.ico
+    iconsDir := A_ScriptDir "/icons/"
+    if (FileExist(iconsDir . n ".ico")) {
+        Menu, Tray, Icon, % iconsDir . n . ".ico"
     }
     else {
-        Menu, Tray, Icon, icons/+.ico
+        Menu, Tray, Icon, % iconsDir . "/+.ico"
     }
 }
 
