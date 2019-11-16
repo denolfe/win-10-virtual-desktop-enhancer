@@ -54,7 +54,13 @@ Menu, Tray, Click, 1
 
 ; Read and groom settings
 
-ReadIni("settings.ini")
+; Read in optional parameter
+settingsIni := "settings.ini"
+param1 = %1%
+if (InStr(param1, ".ini") && FileExist(param1)) {
+    settingsIni := param1
+}
+ReadIni(settingsIni)
 
 global GeneralDesktopWrapping := (GeneralDesktopWrapping != "" and GeneralDesktopWrapping ~= "^[01]$") ? GeneralDesktopWrapping : 1
 global TooltipsEnabled := (TooltipsEnabled != "" and TooltipsEnabled ~= "^[01]$") ? TooltipsEnabled : 1
